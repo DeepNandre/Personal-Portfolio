@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import CustomGifLoader from "./components/ui/CustomGifLoader";
+import MinimalLoader from "./components/ui/MinimalLoader";
 import MorphingShapes from "./components/ui/MorphingShapes";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
@@ -32,10 +32,9 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <CustomGifLoader 
+        <MinimalLoader 
           isLoading={isLoading} 
           onComplete={() => setIsLoading(false)}
-          customGif="/my-loading.gif"
         />
         {!isLoading && (
           <>
