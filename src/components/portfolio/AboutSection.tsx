@@ -60,7 +60,7 @@ const AboutSection = () => {
               </p>
               
               <p className="leading-relaxed">
-                I've delivered impactful projects including a <span className="font-medium text-blue-600">national award-winning VPN detection system</span>, a <span className="font-medium text-blue-600">BS EN 62305-2 compliant</span> lightning risk engine, and <span className="font-medium text-blue-600">ML-driven threat detection</span> on Azure Sentinel with <span className="font-medium text-blue-600">35% false positive reduction</span>.
+                I've delivered impactful projects including a <span className="font-semibold text-neutral-900">national award-winning VPN detection system</span>, a <span className="font-semibold text-neutral-900">BS EN 62305-2 compliant</span> lightning risk engine, and <span className="font-semibold text-neutral-900">ML-driven threat detection</span> on Azure Sentinel with <span className="font-semibold text-neutral-900">35% false positive reduction</span>.
               </p>
               
               <div className="p-6 border-2 border-neutral-900 bg-neutral-50">

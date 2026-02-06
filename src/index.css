@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -97,30 +97,30 @@
   }
 
   body {
-    @apply bg-white text-neutral-800 font-sans;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    @apply bg-white text-neutral-900 font-sans;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 }
 
 /* Refined Design System */
 @layer utilities {
   .text-display {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 500;
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    font-weight: 400;
     letter-spacing: -0.025em;
   }
 
   .text-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
@@ -165,16 +165,16 @@
 
   .btn-refined {
     @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-    border-radius: 8px;
+    border-radius: 0;
     letter-spacing: -0.01em;
   }
 
   .btn-primary {
-    @apply btn-refined bg-neutral-900 text-white hover:bg-neutral-800 focus:ring-neutral-500;
+    @apply btn-refined bg-neutral-900 text-white border-2 border-neutral-900 hover:bg-white hover:text-neutral-900 focus:ring-neutral-500;
   }
 
   .btn-secondary {
-    @apply btn-refined bg-transparent border border-neutral-300 text-neutral-700 hover:bg-neutral-50 focus:ring-neutral-500;
+    @apply btn-refined bg-transparent border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white focus:ring-neutral-500;
   }
 
   .btn-ghost {
@@ -182,12 +182,11 @@
   }
 
   .card-refined {
-    @apply bg-white border border-neutral-200 rounded-xl shadow-refined;
-    backdrop-filter: blur(10px);
+    @apply bg-white border-2 border-neutral-900 rounded-none shadow-none;
   }
 
   .section-spacing {
-    @apply py-24 lg:py-32;
+    @apply py-20 lg:py-24;
   }
 
   .container-refined {
@@ -195,19 +194,19 @@
   }
 
   .heading-xl {
-    @apply text-display text-5xl lg:text-6xl xl:text-7xl font-medium text-neutral-900 tracking-tight;
+    @apply text-display text-6xl lg:text-8xl xl:text-9xl text-neutral-900 tracking-tight uppercase;
   }
 
   .heading-lg {
-    @apply text-display text-4xl lg:text-5xl font-medium text-neutral-900 tracking-tight;
+    @apply text-display text-4xl lg:text-6xl text-neutral-900 tracking-tight uppercase;
   }
 
   .heading-md {
-    @apply text-display text-3xl lg:text-4xl font-medium text-neutral-900 tracking-tight;
+    @apply text-display text-3xl lg:text-4xl text-neutral-900 tracking-tight uppercase;
   }
 
   .body-lg {
-    @apply text-body text-lg lg:text-xl text-neutral-600 leading-relaxed;
+    @apply text-body text-lg lg:text-2xl text-neutral-800 leading-tight;
   }
 
   .body-md {

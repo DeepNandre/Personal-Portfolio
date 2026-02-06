@@ -35,24 +35,24 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16 text-neutral-800">
+    <section id="skills" className="py-20 bg-white border-t-2 border-neutral-900">
+      <div className="container-refined">
+        <h2 className="heading-lg text-center mb-16 text-neutral-900">
           Skills & Technologies
         </h2>
         
         <div className="max-w-6xl mx-auto space-y-12">
           {Object.entries(skills).map(([category, items]) => (
             <div key={category} className="space-y-6">
-              <h3 className="text-2xl font-semibold text-neutral-700 border-b border-neutral-200 pb-2">
+              <h3 className="text-2xl font-semibold uppercase tracking-wide text-neutral-900 border-b-2 border-neutral-900 pb-2">
                 {category}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {items.map((skill) => (
                   <Card
                     key={skill.name}
-                    className={`p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group ${
-                      hoveredSkill === skill.name ? 'scale-110 bg-gradient-to-br from-blue-50 to-purple-50' : 'hover:scale-105'
+                    className={`p-6 border-2 border-neutral-900 bg-white transition-all duration-300 cursor-pointer group ${
+                      hoveredSkill === skill.name ? 'bg-neutral-100' : 'hover:bg-neutral-50'
                     }`}
                     onMouseEnter={() => setHoveredSkill(skill.name)}
                     onMouseLeave={() => setHoveredSkill(null)}
@@ -62,10 +62,10 @@ const SkillsSection = () => {
                         <img 
                           src={skill.logo} 
                           alt={skill.name}
-                          className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+                          className="w-10 h-10 object-contain"
                         />
                       </div>
-                      <span className="text-sm font-medium text-neutral-600 text-center">
+                      <span className="text-sm font-semibold uppercase tracking-wide text-neutral-900 text-center">
                         {skill.name}
                       </span>
                     </CardContent>
