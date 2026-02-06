@@ -5,6 +5,18 @@ import InteractiveTimeline from "@/components/ui/InteractiveTimeline";
 const ExperienceSection = () => {
   const experiences = [
     {
+      role: "Graduate Software Engineer",
+      company: "Enspec Power Ltd",
+      period: "Sept 2025 – Present",
+      location: "Manchester, UK",
+      highlights: [
+        "Joined Enspec Power Ltd full-time after completing a placement year as an IT Systems Engineer",
+        "Same employer where I completed my placement year"
+      ],
+      color: "border-neutral-900",
+      bgColor: "bg-white"
+    },
+    {
       role: "IT Systems Engineer",
       company: "Enspec Power Ltd",
       period: "Sept 2024 – Sept 2025",
@@ -14,8 +26,8 @@ const ExperienceSection = () => {
         "Built Power BI dashboards achieving 20% cost reduction in marketing budgets",
         "Developed CI pipelines with GitHub Actions and automated QA processes"
       ],
-      color: "border-blue-200",
-      bgColor: "bg-blue-50"
+      color: "border-neutral-900",
+      bgColor: "bg-white"
     },
     {
       role: "Cloud TA & Lab Engineer", 
@@ -27,8 +39,8 @@ const ExperienceSection = () => {
         "Taught cloud best practices and Docker orchestration to 20+ students",
         "Troubleshot EKS, S3, and Load Balancer configurations"
       ],
-      color: "border-green-200",
-      bgColor: "bg-green-50"
+      color: "border-neutral-900",
+      bgColor: "bg-white"
     },
     {
       role: "Summer Intern",
@@ -40,8 +52,8 @@ const ExperienceSection = () => {
         "Demystified stateful app containerization with Docker, sparking deeper community engagement",
         "Mentored new contributors and led community events, resulting in enhanced tool adoption"
       ],
-      color: "border-yellow-200",
-      bgColor: "bg-yellow-50"
+      color: "border-neutral-900",
+      bgColor: "bg-white"
     },
     {
       role: "Data Analyst Intern",
@@ -52,8 +64,8 @@ const ExperienceSection = () => {
         "Utilized Python libraries and web scraping APIs to efficiently extract data from complex web structures, reducing analysis time by 50%",
         "Integrated and visualized scraped data using Tableau to create interactive dashboards, enhancing decision-making processes with dynamic, data-driven insights"
       ],
-      color: "border-red-200",
-      bgColor: "bg-red-50"
+      color: "border-neutral-900",
+      bgColor: "bg-white"
     },
     {
       role: "Cybersecurity Intern",
@@ -65,15 +77,13 @@ const ExperienceSection = () => {
         "Applied MITRE ATT&CK for threat modeling and digital forensics",
         "Supported PCI DSS compliance audits for government agencies"
       ],
-      color: "border-indigo-200",
-      bgColor: "bg-indigo-50"
+      color: "border-neutral-900",
+      bgColor: "bg-white"
     }
   ];
 
   return (
     <section id="experience" className="py-24 bg-white relative">
-      {/* Section divider */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
       
       <div className="container mx-auto px-6">
         <motion.div
@@ -83,20 +93,20 @@ const ExperienceSection = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-neutral-800">
+          <div className="text-xs uppercase tracking-[0.4em] text-neutral-600 mb-4">
+            Timeline
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-neutral-900">
             Professional Experience
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-24 h-1 bg-neutral-900 mx-auto mb-6"></div>
+          <p className="text-xl text-neutral-700 max-w-2xl mx-auto leading-relaxed">
             Building secure, scalable systems across diverse industries and technologies
           </p>
         </motion.div>
         
         <InteractiveTimeline items={experiences} />
       </div>
-      
-      {/* Bottom section divider */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
     </section>
   );
 };

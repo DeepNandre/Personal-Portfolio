@@ -45,7 +45,7 @@ const CurrentProjectsSection = () => {
   };
 
   return (
-    <section className="section-spacing bg-neutral-50/50">
+    <section className="section-spacing bg-white">
       <div className="container-refined">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,10 +54,13 @@ const CurrentProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
+          <div className="text-xs uppercase tracking-[0.4em] text-neutral-600 mb-4">
+            In Progress
+          </div>
           <h2 className="heading-lg mb-6">
             Currently Building
           </h2>
-          <p className="body-lg max-w-2xl mx-auto">
+          <p className="body-lg max-w-2xl mx-auto text-neutral-700">
             Continuous innovation at the intersection of security, scale, and speed
           </p>
         </motion.div>
@@ -71,28 +74,28 @@ const CurrentProjectsSection = () => {
         >
           {currentProjects.map((project, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card className="card-refined group hoverable h-full">
+              <Card className="border-2 border-neutral-900 rounded-none shadow-none h-full">
                 <CardContent className="p-8 space-y-6 h-full flex flex-col">
                   <div className="flex items-center justify-between">
-                    <div className="p-3 bg-neutral-100 rounded-xl group-hover:bg-neutral-200 transition-colors duration-300">
-                      <project.icon className="h-6 w-6 text-neutral-700" />
+                    <div className="p-3 bg-neutral-100 border-2 border-neutral-900">
+                      <project.icon className="h-6 w-6 text-neutral-900" />
                     </div>
-                    <Badge variant="outline" className="text-xs font-medium border-neutral-300 text-neutral-600">
+                    <Badge variant="outline" className="text-[11px] font-semibold border-neutral-900 text-neutral-800 uppercase tracking-wide">
                       {project.status}
                     </Badge>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-neutral-900 text-display">
+                  <h3 className="text-xl font-semibold text-neutral-900 text-display uppercase tracking-wide">
                     {project.title}
                   </h3>
                   
-                  <p className="text-neutral-600 leading-relaxed flex-1">
+                  <p className="text-neutral-700 leading-relaxed flex-1">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs border-neutral-200 text-neutral-500 hover:border-neutral-300 transition-colors duration-200">
+                      <Badge key={tech} variant="outline" className="text-[11px] border-neutral-900 text-neutral-800 uppercase tracking-wide">
                         {tech}
                       </Badge>
                     ))}

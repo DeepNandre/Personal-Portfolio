@@ -5,11 +5,12 @@ import CreativeContact from "./CreativeContact";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Let's Connect</h2>
-          <p className="text-lg text-gray-600 mb-12">
+          <div className="text-xs uppercase tracking-[0.4em] text-neutral-600 mb-4">Contact</div>
+          <h2 className="text-3xl font-bold text-neutral-900 mb-8">Let's Connect</h2>
+          <p className="text-lg text-neutral-700 mb-12">
             Ready to build something amazing together? Here's how to reach me:
           </p>
           
@@ -21,7 +22,7 @@ const ContactSection = () => {
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
+                className="bg-white text-neutral-900 border-2 border-neutral-900 px-8 py-3 rounded-none hover:bg-neutral-900 hover:text-white"
                 onClick={() => window.open('mailto:23685656@stu.mmu.ac.uk', '_blank')}
               >
                 <Mail className="mr-2 h-5 w-5" />
@@ -29,7 +30,7 @@ const ContactSection = () => {
               </Button>
               <Button 
                 variant="outline" 
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3"
+                className="border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white px-8 py-3 rounded-none"
                 onClick={() => window.open('https://www.linkedin.com/in/deep-nandre5/', '_blank')}
               >
                 <Linkedin className="mr-2 h-5 w-5" />
@@ -37,7 +38,7 @@ const ContactSection = () => {
               </Button>
             </div>
             
-            <div className="text-gray-600">
+            <div className="text-neutral-700">
               <p className="flex items-center justify-center gap-2">
                 <MapPin className="h-4 w-4" />
                 Manchester, United Kingdom

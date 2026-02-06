@@ -25,7 +25,7 @@ const CreativeContact = () => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+      <Card className="bg-white border-2 border-neutral-900 rounded-none shadow-none">
         <CardContent className="p-8">
           <div className="space-y-8">
             {/* Header Section */}
@@ -35,14 +35,17 @@ const CreativeContact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Shield className="h-6 w-6 text-blue-600" />
-                <h3 className="text-2xl font-bold text-gray-900">
+              <div className="text-xs uppercase tracking-[0.4em] text-neutral-600">
+                Secure Contact
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <Shield className="h-6 w-6 text-neutral-900" />
+                <h3 className="text-2xl font-semibold text-neutral-900 uppercase tracking-wide">
                   Secure Contact Information
                 </h3>
-                <Shield className="h-6 w-6 text-blue-600" />
+                <Shield className="h-6 w-6 text-neutral-900" />
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-neutral-700 text-sm leading-relaxed">
                 My contact details are encoded using <strong>Base64</strong> - a common encoding method used in cybersecurity. 
                 Click below to decode and learn about digital security practices!
               </p>
@@ -52,20 +55,18 @@ const CreativeContact = () => {
             <div className="space-y-4">
               {/* Email */}
               <motion.div 
-                className="group bg-gray-50 hover:bg-gray-100 transition-all duration-300 p-6 rounded-lg border border-gray-100"
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="group bg-white transition-all duration-300 p-6 border-2 border-neutral-900"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                    <Mail className="h-5 w-5 text-blue-600" />
+                  <div className="p-3 bg-neutral-100 border-2 border-neutral-900">
+                    <Mail className="h-5 w-5 text-neutral-900" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Email Address</div>
-                    <div className={`font-mono text-sm p-3 rounded-md border transition-all duration-500 ${
+                    <div className="text-sm font-semibold text-neutral-900 mb-1 uppercase tracking-wide">Email Address</div>
+                    <div className={`font-mono text-sm p-3 border-2 transition-all duration-500 ${
                       showDecoded 
-                        ? "bg-green-50 border-green-200 text-green-800" 
-                        : "bg-gray-100 border-gray-200 text-gray-500"
+                        ? "bg-white border-neutral-900 text-neutral-900" 
+                        : "bg-neutral-50 border-neutral-900 text-neutral-600"
                     }`}>
                       <span className="select-all break-all">
                         {showDecoded ? decodedEmail : encodedEmail}
@@ -77,20 +78,18 @@ const CreativeContact = () => {
               
               {/* Phone */}
               <motion.div 
-                className="group bg-gray-50 hover:bg-gray-100 transition-all duration-300 p-6 rounded-lg border border-gray-100"
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="group bg-white transition-all duration-300 p-6 border-2 border-neutral-900"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
-                    <Phone className="h-5 w-5 text-purple-600" />
+                  <div className="p-3 bg-neutral-100 border-2 border-neutral-900">
+                    <Phone className="h-5 w-5 text-neutral-900" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Phone Number</div>
-                    <div className={`font-mono text-sm p-3 rounded-md border transition-all duration-500 ${
+                    <div className="text-sm font-semibold text-neutral-900 mb-1 uppercase tracking-wide">Phone Number</div>
+                    <div className={`font-mono text-sm p-3 border-2 transition-all duration-500 ${
                       showDecoded 
-                        ? "bg-green-50 border-green-200 text-green-800" 
-                        : "bg-gray-100 border-gray-200 text-gray-500"
+                        ? "bg-white border-neutral-900 text-neutral-900" 
+                        : "bg-neutral-50 border-neutral-900 text-neutral-600"
                     }`}>
                       <span className="select-all break-all">
                         {showDecoded ? decodedPhone : encodedPhone}
@@ -103,13 +102,13 @@ const CreativeContact = () => {
             
             {/* Action Button */}
             <div className="flex justify-center pt-4">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   onClick={handleReveal}
-                  className={`font-medium px-8 py-3 rounded-lg transition-all duration-300 ${
+                  className={`font-semibold px-8 py-3 rounded-none border-2 border-neutral-900 transition-all duration-300 ${
                     showDecoded
-                      ? "bg-red-500 hover:bg-red-600 text-white"
-                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                      ? "bg-neutral-900 text-white hover:bg-black"
+                      : "bg-white text-neutral-900 hover:bg-neutral-900 hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -131,10 +130,10 @@ const CreativeContact = () => {
             
             {/* Status Indicator */}
             <div className="text-center">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${
+              <div className={`inline-flex items-center gap-2 px-4 py-2 border-2 border-neutral-900 text-sm font-semibold uppercase tracking-wide ${
                 showDecoded 
-                  ? "bg-green-100 text-green-800" 
-                  : "bg-gray-100 text-gray-600"
+                  ? "bg-white text-neutral-900" 
+                  : "bg-neutral-50 text-neutral-700"
               }`}>
                 {showDecoded ? (
                   <>
@@ -158,16 +157,16 @@ const CreativeContact = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-6 rounded-lg"
+                  className="bg-white border-2 border-neutral-900 p-6"
                 >
                   <div className="flex items-start gap-3">
-                    <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <Info className="h-5 w-5 text-neutral-900 mt-0.5 flex-shrink-0" />
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-blue-900">
-                        🔐 What You Just Learned About Digital Security:
+                      <h4 className="font-semibold text-neutral-900 uppercase tracking-wide">
+                        What You Just Learned About Digital Security
                       </h4>
                       
-                      <div className="space-y-3 text-sm text-blue-800">
+                      <div className="space-y-3 text-sm text-neutral-800">
                         <div>
                           <strong>Base64 Encoding:</strong> This isn't encryption, but encoding - a way to represent data in a different format. 
                           It converts text into a string of letters, numbers, and symbols that looks scrambled but can be easily decoded.
@@ -184,8 +183,8 @@ const CreativeContact = () => {
                           and web developers use it to embed images directly in code. It's everywhere in digital communication!
                         </div>
                         
-                        <div className="bg-white/50 p-3 rounded border-l-4 border-blue-400">
-                          <strong>💡 Security Tip:</strong> Never rely on encoding alone for sensitive data. 
+                        <div className="bg-neutral-50 p-3 border-l-4 border-neutral-900">
+                          <strong>Security Tip:</strong> Never rely on encoding alone for sensitive data. 
                           Always use proper encryption (like AES) and secure protocols (like TLS) for real protection.
                         </div>
                       </div>
@@ -200,9 +199,9 @@ const CreativeContact = () => {
               <motion.div 
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
-                className="bg-gray-50 border border-gray-200 p-4 rounded-lg"
+                className="bg-neutral-50 border-2 border-neutral-900 p-4"
               >
-                <p className="text-gray-700 text-sm text-center">
+                <p className="text-neutral-800 text-sm text-center">
                   <strong>Privacy by Design:</strong> Contact information is encoded to demonstrate security concepts 
                   while protecting against automated scrapers and bots.
                 </p>
