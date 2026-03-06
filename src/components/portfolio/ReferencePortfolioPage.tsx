@@ -185,14 +185,16 @@ const CompanyBadge = ({
 }) => {
   return (
     <div
-      className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`}
+      className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`}
     >
       {logo ? (
-        <img
-          src={encodeURI(logo)}
-          alt=""
-          className="h-full w-full object-cover"
-        />
+        <div className="absolute inset-0.5 flex items-center justify-center">
+          <img
+            src={encodeURI(logo)}
+            alt=""
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
       ) : (
         badge
       )}
@@ -350,18 +352,20 @@ const ReferencePortfolioPage = () => {
               >
                 <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                   <div
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold uppercase ${
+                    className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold uppercase ${
                       isDark
-                        ? "border border-white/10 bg-white text-black"
-                        : "border border-black/10 bg-black text-white"
+                        ? "border border-white/10 bg-neutral-50 text-black"
+                        : "border border-black/10 bg-neutral-100 text-black"
                     }`}
                   >
                     {item.logo ? (
-                      <img
-                        src={encodeURI(item.logo)}
-                        alt=""
-                        className="h-full w-full object-cover"
-                      />
+                      <div className="absolute inset-0.5 flex items-center justify-center">
+                        <img
+                          src={encodeURI(item.logo)}
+                          alt=""
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </div>
                     ) : (
                       item.badge
                     )}
