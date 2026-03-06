@@ -362,6 +362,20 @@ const ReferencePortfolioPage = () => {
           </div>
         </section>
 
+        <section id="skills" className="mt-20">
+          <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>skills</h2>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {skillItems.map((skill) => (
+              <span
+                key={skill}
+                className={`rounded-xl px-4 py-2 text-base font-semibold leading-none ${chipClass}`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </section>
+
         <section id="security-check" className="mt-20">
           <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>
             60-sec security check
@@ -395,20 +409,6 @@ const ReferencePortfolioPage = () => {
                   </p>
                 )}
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="skills" className="mt-20">
-          <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>skills</h2>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {skillItems.map((skill) => (
-              <span
-                key={skill}
-                className={`rounded-xl px-4 py-2 text-base font-semibold leading-none ${chipClass}`}
-              >
-                {skill}
-              </span>
             ))}
           </div>
         </section>
