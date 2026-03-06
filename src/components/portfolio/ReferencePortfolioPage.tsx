@@ -18,6 +18,7 @@ type WorkItem = {
   href?: string;
   badge: string;
   accent: string;
+  logo?: string;
 };
 
 type EducationItem = {
@@ -26,6 +27,7 @@ type EducationItem = {
   period: string;
   href?: string;
   badge: string;
+  logo?: string;
 };
 
 const workItems: WorkItem[] = [
@@ -39,6 +41,7 @@ const workItems: WorkItem[] = [
     ],
     badge: "PL",
     accent: "from-violet-500 to-indigo-400",
+    logo: "/images/atlas-logo.png",
   },
   {
     id: "accelerate-me",
@@ -56,6 +59,7 @@ const workItems: WorkItem[] = [
     ],
     badge: "AM",
     accent: "from-emerald-500 to-teal-400",
+    logo: "/images/accelerate me.avif",
   },
   {
     id: "enspec",
@@ -68,6 +72,7 @@ const workItems: WorkItem[] = [
     href: "https://enspecpower.com/",
     badge: "EP",
     accent: "from-orange-500 to-amber-400",
+    logo: "/images/enspec logo.png",
   },
   {
     id: "dy-patil",
@@ -77,6 +82,7 @@ const workItems: WorkItem[] = [
     bullets: ["managed aws and gcp labs for students and taught cloud fundamentals."],
     badge: "DY",
     accent: "from-fuchsia-500 to-pink-500",
+    logo: "/images/DY Patil.png",
   },
   {
     id: "dok",
@@ -86,6 +92,7 @@ const workItems: WorkItem[] = [
     bullets: ["ran workshops and community programs around docker and kubernetes."],
     badge: "DK",
     accent: "from-zinc-300 to-zinc-500",
+    logo: "/images/DOK.jpeg",
   },
   {
     id: "vmedulife",
@@ -95,6 +102,7 @@ const workItems: WorkItem[] = [
     bullets: ["scraped, transformed, and visualized operational data for reporting."],
     badge: "VS",
     accent: "from-yellow-400 to-amber-300",
+    logo: "/images/Vmedulife software.jpg",
   },
 ];
 
@@ -105,12 +113,14 @@ const educationItems: EducationItem[] = [
     period: "2024 - 2025",
     href: "https://www.mmu.ac.uk/",
     badge: "MM",
+    logo: "/images/MMU.png",
   },
   {
     school: "savitribai phule pune university",
     course: "bachelor's in electronics & telecommunication",
     period: "2020 - 2023",
     badge: "SP",
+    logo: "/images/DY Patil.png",
   },
 ];
 
@@ -164,12 +174,28 @@ const securityScenarios = [
   },
 ];
 
-const CompanyBadge = ({ badge, accent }: { badge: string; accent: string }) => {
+const CompanyBadge = ({
+  badge,
+  accent,
+  logo,
+}: {
+  badge: string;
+  accent: string;
+  logo?: string;
+}) => {
   return (
     <div
-      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`}
+      className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`}
     >
-      {badge}
+      {logo ? (
+        <img
+          src={encodeURI(logo)}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        badge
+      )}
     </div>
   );
 };
@@ -221,15 +247,11 @@ const ReferencePortfolioPage = () => {
             <div
               className={`flex h-36 w-36 items-center justify-center rounded-full ${cardClass} overflow-hidden sm:h-40 sm:w-40`}
             >
-              <div
-                className={`flex h-[86%] w-[86%] items-center justify-center rounded-full text-4xl font-semibold tracking-[-0.08em] ${
-                  isDark
-                    ? "border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_rgba(255,255,255,0.02)_70%)]"
-                    : "border border-black/10 bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.1),_rgba(0,0,0,0.02)_70%)]"
-                }`}
-              >
-                DN
-              </div>
+              <img
+                src={encodeURI("/images/me as a kid.jpg")}
+                alt="Deep Nandre"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </section>
@@ -277,7 +299,7 @@ const ReferencePortfolioPage = () => {
               >
                 <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto_auto] sm:items-start">
                   <div className="pt-1 sm:pt-0">
-                    <CompanyBadge badge={item.badge} accent={item.accent} />
+                    <CompanyBadge badge={item.badge} accent={item.accent} logo={item.logo} />
                   </div>
                   <div>
                     <div
@@ -328,13 +350,21 @@ const ReferencePortfolioPage = () => {
               >
                 <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                   <div
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-sm font-bold uppercase ${
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold uppercase ${
                       isDark
                         ? "border border-white/10 bg-white text-black"
                         : "border border-black/10 bg-black text-white"
                     }`}
                   >
-                    {item.badge}
+                    {item.logo ? (
+                      <img
+                        src={encodeURI(item.logo)}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      item.badge
+                    )}
                   </div>
                   <div>
                     {item.href ? (
