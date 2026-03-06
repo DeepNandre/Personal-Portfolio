@@ -251,7 +251,7 @@ const ReferencePortfolioPage = () => {
 
           <div className="flex justify-start md:justify-end">
             <div
-              className={`flex h-36 w-36 items-center justify-center rounded-full ${cardClass} overflow-hidden sm:h-40 sm:w-40`}
+              className={`relative flex h-36 w-36 items-center justify-center rounded-full ${cardClass} overflow-hidden ring-1 ring-white/20 sm:h-40 sm:w-40`}
             >
               <img
                 src={encodeURI("/images/me as a kid.jpg")}
