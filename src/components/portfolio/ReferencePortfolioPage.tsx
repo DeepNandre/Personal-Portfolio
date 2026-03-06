@@ -178,15 +178,19 @@ const CompanyBadge = ({
   badge,
   accent,
   logo,
+  isDark,
 }: {
   badge: string;
   accent: string;
   logo?: string;
+  isDark: boolean;
 }) => {
+  const logoContainerClass = logo
+    ? "relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold uppercase border border-white/10 bg-white text-black"
+    : `relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`;
+
   return (
-    <div
-      className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${accent} text-sm font-bold uppercase text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]`}
-    >
+    <div className={logoContainerClass}>
       {logo ? (
         <div className="absolute inset-0.5 flex items-center justify-center">
           <img
@@ -301,7 +305,7 @@ const ReferencePortfolioPage = () => {
               >
                 <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto_auto] sm:items-start">
                   <div className="pt-1 sm:pt-0">
-                    <CompanyBadge badge={item.badge} accent={item.accent} logo={item.logo} />
+                    <CompanyBadge badge={item.badge} accent={item.accent} logo={item.logo} isDark={isDark} />
                   </div>
                   <div>
                     <div
