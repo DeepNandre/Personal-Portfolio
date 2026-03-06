@@ -1,4 +1,4 @@
-import { FormEvent, ReactNode, useState } from "react";
+import { useState } from "react";
 import {
   Github,
   Home,
@@ -10,10 +10,11 @@ import {
 } from "lucide-react";
 
 type WorkItem = {
+  id: string;
   company: string;
   role: string;
   period: string;
-  description: string;
+  bullets: string[];
   href?: string;
   badge: string;
   accent: string;
@@ -29,44 +30,69 @@ type EducationItem = {
 
 const workItems: WorkItem[] = [
   {
+    id: "parallel-labs",
+    company: "parallel labs",
+    role: "ceo & cto",
+    period: "2026 - present",
+    bullets: [
+      "currently building atlasly, a pre-construction intelligence software platform for the aec industry.",
+    ],
+    badge: "PL",
+    accent: "from-violet-500 to-indigo-400",
+  },
+  {
+    id: "accelerate-me",
+    company: "accelerate me",
+    role: "fellow (cohort 12)",
+    period: "2026",
+    bullets: [
+      "12 weeks of intensive workshops.",
+      "$10,000 in equity-free funding.",
+      "mentorship from industry professionals.",
+      "networking opportunities across the uk startup ecosystem.",
+      "trips to london, lisbon, and beyond.",
+      "co-working space access.",
+      "$280,000+ in partner perks from nvidia, supabase, notion, github, and more.",
+    ],
+    badge: "AM",
+    accent: "from-emerald-500 to-teal-400",
+  },
+  {
+    id: "enspec",
     company: "enspec power ltd",
-    role: "graduate software engineer | fulltime",
-    period: "sept 2025 - present",
-    description: "building internal software systems for power engineering workflows.",
+    role: "software engineer",
+    period: "sept 2024 - present",
+    bullets: [
+      "built and shipped internal software systems including lightning risk workflows and automation tooling.",
+    ],
     href: "https://enspecpower.com/",
     badge: "EP",
     accent: "from-orange-500 to-amber-400",
   },
   {
-    company: "enspec power ltd",
-    role: "it systems engineer | placement year",
-    period: "sept 2024 - sept 2025",
-    description: "built the lightning risk engine and automated internal reporting.",
-    href: "https://enspecpower.com/",
-    badge: "EP",
-    accent: "from-sky-500 to-cyan-400",
-  },
-  {
+    id: "dy-patil",
     company: "d y patil international university",
     role: "cloud ta & lab engineer",
     period: "jan 2023 - may 2023",
-    description: "managed aws and gcp labs for students and taught cloud fundamentals.",
+    bullets: ["managed aws and gcp labs for students and taught cloud fundamentals."],
     badge: "DY",
     accent: "from-fuchsia-500 to-pink-500",
   },
   {
+    id: "dok",
     company: "data on kubernetes",
     role: "summer intern",
     period: "jan 2022 - sept 2022",
-    description: "ran workshops and community programs around docker and kubernetes.",
+    bullets: ["ran workshops and community programs around docker and kubernetes."],
     badge: "DK",
     accent: "from-zinc-300 to-zinc-500",
   },
   {
+    id: "vmedulife",
     company: "vmedulife software services",
     role: "data analyst intern",
     period: "june 2021 - sept 2021",
-    description: "scraped, transformed, and visualized operational data for reporting.",
+    bullets: ["scraped, transformed, and visualized operational data for reporting."],
     badge: "VS",
     accent: "from-yellow-400 to-amber-300",
   },
@@ -111,6 +137,33 @@ const dockLinks = [
   { href: "mailto:23685656@stu.mmu.ac.uk", label: "Email", icon: Mail, external: true },
 ];
 
+const securityScenarios = [
+  {
+    id: "delivery",
+    title: "fake delivery text",
+    situation:
+      "you get a text saying your parcel is delayed and asks you to click a link + enter card details for a re-delivery fee.",
+    lesson:
+      "real couriers do not ask for card details from random sms links. open the courier app/site directly instead.",
+  },
+  {
+    id: "wifi",
+    title: "free airport wi-fi",
+    situation:
+      "a public wi-fi page asks for your email, phone, and date of birth before you can connect.",
+    lesson:
+      "share the minimum possible on public portals. avoid banking/logins on open wi-fi unless you use trusted mobile data or a vpn.",
+  },
+  {
+    id: "work-email",
+    title: "urgent work email",
+    situation:
+      "an email says 'your account will be disabled in 10 minutes' and asks you to reset your password right now.",
+    lesson:
+      "urgency is a classic phishing trick. do not click from the email. go to your normal company login page and verify with it/admin.",
+  },
+];
+
 const CompanyBadge = ({ badge, accent }: { badge: string; accent: string }) => {
   return (
     <div
@@ -121,32 +174,10 @@ const CompanyBadge = ({ badge, accent }: { badge: string; accent: string }) => {
   );
 };
 
-const RowLink = ({
-  href,
-  children,
-}: {
-  href?: string;
-  children: ReactNode;
-}) => {
-  if (!href) {
-    return <div>{children}</div>;
-  }
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="block transition-opacity hover:opacity-100 opacity-95"
-    >
-      {children}
-    </a>
-  );
-};
-
 const ReferencePortfolioPage = () => {
   const [isDark, setIsDark] = useState(true);
-  const [subscriberEmail, setSubscriberEmail] = useState("");
+  const [expandedExperience, setExpandedExperience] = useState<string | null>("parallel-labs");
+  const [revealedScenario, setRevealedScenario] = useState<string | null>(null);
 
   const pageClassName = isDark
     ? "min-h-screen bg-[#050505] text-white"
@@ -164,14 +195,8 @@ const ReferencePortfolioPage = () => {
     ? "border border-white/10 bg-white text-black"
     : "border border-black/10 bg-black text-white";
 
-  const handleSubscribe = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const cleaned = subscriberEmail.trim();
-    if (!cleaned) return;
-
-    window.location.href = `mailto:23685656@stu.mmu.ac.uk?subject=subscribe%20me&body=please%20add%20${encodeURIComponent(
-      cleaned
-    )}%20to%20your%20updates%20list`;
+  const toggleExperience = (id: string) => {
+    setExpandedExperience((current) => (current === id ? null : id));
   };
 
   return (
@@ -235,21 +260,60 @@ const ReferencePortfolioPage = () => {
           <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>cool places i worked at</h2>
           <div className="mt-6 space-y-5">
             {workItems.map((item) => (
-              <RowLink key={`${item.company}-${item.period}`} href={item.href}>
-                <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto] sm:items-center">
+              <div
+                key={item.id}
+                onClick={() => toggleExperience(item.id)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleExperience(item.id);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-expanded={expandedExperience === item.id}
+                aria-label={`Toggle details for ${item.company}`}
+                className={`w-full rounded-2xl p-3 text-left transition ${cardClass} hover:opacity-95`}
+              >
+                <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto_auto] sm:items-start">
                   <div className="pt-1 sm:pt-0">
                     <CompanyBadge badge={item.badge} accent={item.accent} />
                   </div>
                   <div>
-                    <div className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${headingTextClass}`}>
-                      {item.company}
+                    <div
+                      className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${headingTextClass} underline underline-offset-4 ${
+                        isDark ? "decoration-white/30" : "decoration-black/30"
+                      }`}
+                    >
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(event) => event.stopPropagation()}
+                          className="hover:opacity-80"
+                        >
+                          {item.company}
+                        </a>
+                      ) : (
+                        item.company
+                      )}
                     </div>
                     <div className={`text-base ${mutedTextClass}`}>{item.role}</div>
-                    <div className={`text-sm ${mutedTextClass}`}>{item.description}</div>
+                    {expandedExperience === item.id && (
+                      <ul className={`mt-3 list-disc space-y-2 pl-5 text-sm ${mutedTextClass}`}>
+                        {item.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   <div className={`text-base sm:text-right ${mutedTextClass}`}>{item.period}</div>
+                  <div className={`text-xl leading-none sm:text-right ${mutedTextClass}`}>
+                    {expandedExperience === item.id ? "-" : "+"}
+                  </div>
                 </div>
-              </RowLink>
+              </div>
             ))}
           </div>
         </section>
@@ -282,26 +346,41 @@ const ReferencePortfolioPage = () => {
           </div>
         </section>
 
-        <section id="updates" className="mt-20">
-          <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>stay updated</h2>
-          <p className={`mt-2 text-lg ${mutedTextClass}`}>subscribe to my email list</p>
-          <form onSubmit={handleSubscribe} className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={subscriberEmail}
-              onChange={(event) => setSubscriberEmail(event.target.value)}
-              className={`h-14 flex-1 rounded-2xl px-5 text-lg outline-none transition ${cardClass} ${
-                isDark ? "placeholder:text-white/40" : "placeholder:text-black/40"
-              }`}
-            />
-            <button
-              type="submit"
-              className="h-14 rounded-2xl bg-[#424f68] px-7 text-lg font-semibold text-white transition hover:opacity-90"
-            >
-              Subscribe
-            </button>
-          </form>
+        <section id="security-check" className="mt-20">
+          <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>
+            60-sec security check
+          </h2>
+          <p className={`mt-2 text-lg ${mutedTextClass}`}>
+            quick real-life situations anyone can learn from.
+          </p>
+          <div className="mt-6 space-y-4">
+            {securityScenarios.map((scenario) => (
+              <div key={scenario.id} className={`rounded-2xl p-4 ${cardClass}`}>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 className={`text-lg font-semibold ${headingTextClass}`}>{scenario.title}</h3>
+                    <p className={`mt-1 text-sm ${mutedTextClass}`}>{scenario.situation}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setRevealedScenario((current) => (current === scenario.id ? null : scenario.id))
+                    }
+                    className={`shrink-0 rounded-xl px-4 py-2 text-sm font-semibold transition ${
+                      isDark ? "bg-white text-black hover:bg-white/90" : "bg-black text-white hover:bg-black/90"
+                    }`}
+                  >
+                    {revealedScenario === scenario.id ? "hide lesson" : "reveal lesson"}
+                  </button>
+                </div>
+                {revealedScenario === scenario.id && (
+                  <p className={`mt-3 border-t pt-3 text-sm ${mutedTextClass} ${isDark ? "border-white/10" : "border-black/10"}`}>
+                    {scenario.lesson}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
         </section>
 
         <section id="skills" className="mt-20">
