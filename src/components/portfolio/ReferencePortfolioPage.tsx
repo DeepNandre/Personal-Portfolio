@@ -322,7 +322,10 @@ const ReferencePortfolioPage = () => {
           <h2 className={`text-[2.2rem] font-semibold tracking-[-0.05em] ${headingTextClass}`}>education</h2>
           <div className="mt-6 space-y-5">
             {educationItems.map((item) => (
-              <RowLink key={`${item.school}-${item.period}`} href={item.href}>
+              <div
+                key={`${item.school}-${item.period}`}
+                className={`rounded-2xl p-3 transition ${cardClass} hover:opacity-95`}
+              >
                 <div className="grid gap-4 sm:grid-cols-[auto_1fr_auto] sm:items-center">
                   <div
                     className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-sm font-bold uppercase ${
@@ -334,14 +337,27 @@ const ReferencePortfolioPage = () => {
                     {item.badge}
                   </div>
                   <div>
-                    <div className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${headingTextClass}`}>
-                      {item.school}
-                    </div>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`text-[1.05rem] font-semibold tracking-[-0.03em] underline underline-offset-4 ${
+                          isDark ? "text-white decoration-white/30" : "text-black decoration-black/30"
+                        }`}
+                      >
+                        {item.school}
+                      </a>
+                    ) : (
+                      <div className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${headingTextClass}`}>
+                        {item.school}
+                      </div>
+                    )}
                     <div className={`text-base ${mutedTextClass}`}>{item.course}</div>
                   </div>
                   <div className={`text-base sm:text-right ${mutedTextClass}`}>{item.period}</div>
                 </div>
-              </RowLink>
+              </div>
             ))}
           </div>
         </section>
